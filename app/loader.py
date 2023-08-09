@@ -1,11 +1,10 @@
 import logging
 
+import config
 from aiogram import Bot, Dispatcher, executor, types
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
 
-import config
-
-logging.basicConfig(level=logging.INFO)
+# logging.basicConfig(level=logging.INFO)
 
 storage = MemoryStorage()
 

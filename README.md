@@ -1,1 +1,1 @@
-source .venv/Scripts/activate
+ispent
