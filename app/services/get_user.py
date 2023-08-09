@@ -9,5 +9,5 @@ async def get_user(id: int):
     try:
         user = await User.query.where(User.id_telegram == id).gino.first()
         return user
-    except:
-        return None
+    except Exception as e:
+        await message.reply(e)

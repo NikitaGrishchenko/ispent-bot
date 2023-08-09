@@ -18,6 +18,8 @@ async def create_user(message: types.Message):
                 id_telegram=message.from_user["id"],
                 first_name=message.from_user["first_name"],
                 username=message.from_user["username"],
+                language_code=message.from_user["language_code"],
+                is_bot=message.from_user["is_bot"],
             )
             return user
         except Exception as e:
