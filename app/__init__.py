@@ -1,15 +1,18 @@
 from .config import DATABASE_URL
-from .handlers import create_operation, start
+from .handlers import start, test, text_handler
 from .services import create_operation, create_user, get_user
-from .utils import create_operation_keyboard, db
+from .utils import CreateOperation, create_operation_keyboard, db, set_default_commands
 
 __all__ = [
     "start",
-    "create_operation",
+    "text_handler",
     "db",
     "DATABASE_URL",
     "get_user",
     "create_user",
     "create_operation",
     "create_operation_keyboard",
+    "CreateOperation",
+    "test",
+    "set_default_commands",
 ]
