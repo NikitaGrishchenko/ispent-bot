@@ -5,7 +5,7 @@ from aiogram import types
 from utils import create_operation_keyboard
 
 
-async def create_operation(message: types.Message):
+async def eval_amount_operation(message: types.Message):
     """
     Create operation in database
     return Operation object
