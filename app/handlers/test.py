@@ -1,3 +1,4 @@
+import services
 from aiogram import types
 from aiogram.dispatcher import FSMContext
 from loader import dp
@@ -5,7 +6,7 @@ from loader import dp
 
 @dp.message_handler(commands="test")
 async def test(message: types.Message, state: FSMContext):
-    markup = types.ReplyKeyboardRemove()
+    # markup = types.ReplyKeyboardRemove()
     data = await state.get_data()
     await message.answer(data, reply_markup=markup)
 

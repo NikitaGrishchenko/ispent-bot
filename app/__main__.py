@@ -1,12 +1,12 @@
+import config
 import handlers
 from aiogram import executor
-from config import DATABASE_URL
 from loader import dp
 from utils import db, set_default_commands
 
 
 async def on_startup(dp):
-    await db.set_bind(DATABASE_URL)
+    await db.set_bind(config.DATABASE_URL)
     await set_default_commands(dp)
     # await db.gino.drop_all()
     # await db.gino.create_all()
