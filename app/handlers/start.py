@@ -1,6 +1,6 @@
 from aiogram import types
 from loader import dp
-from services import create_user, get_user
+from services import create_user
 
 
 @dp.message_handler(commands="start")

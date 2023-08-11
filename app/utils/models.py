@@ -22,10 +22,10 @@ class CategoryUser(db.Model):
     id = db.Column(db.Integer, unique=True, primary_key=True, autoincrement=True)
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
     name = db.Column(db.String(length=255), unique=True)
+    kind = db.Column(db.Integer)
 
 
-import enum
-
+# import enum
 # class MessageTypes(enum.Enum):
 #     income = 1
 #     expense = 2
