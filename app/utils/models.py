@@ -7,10 +7,11 @@ db = Gino()
 class User(db.Model):
     __tablename__ = "user"
 
-    id = db.Column(db.Integer, unique=True, primary_key=True, autoincrement=True)
-    id_telegram = db.Column(db.Integer)
+    id = db.Column(db.BigInteger, unique=True, primary_key=True, autoincrement=True)
+    id_telegram = db.Column(db.BigInteger)
     username = db.Column(db.String(length=255))
     first_name = db.Column(db.String(length=255))
+    last_name = db.Column(db.String(length=255))
     language_code = db.Column(db.String(length=255))
     is_bot = db.Column(db.Boolean)
     created_at = db.Column(db.DateTime(timezone=True), default=func.now())

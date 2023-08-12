@@ -6,9 +6,10 @@ from loader import dp
 
 @dp.message_handler(commands="test")
 async def test(message: types.Message, state: FSMContext):
-    # markup = types.ReplyKeyboardRemove()
+    markup = types.ReplyKeyboardRemove()
     data = await state.get_data()
-    await message.answer(data, reply_markup=markup)
+    await message.answer(message.from_user)
+    # await message.answer(data, reply_markup=markup)
 
     # await state.finish()
 

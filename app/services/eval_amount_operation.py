@@ -3,9 +3,8 @@ import re
 import pandas
 from aiogram import types
 from aiogram.dispatcher import FSMContext
-from services.get_categories_user import get_categories_user
+from utils import states
 from utils.keyboards import create_operation_keyboard
-from utils.states import CreateOperation
 
 
 async def eval_amount_operation(message: types.Message, state: FSMContext):
@@ -17,9 +16,9 @@ async def eval_amount_operation(message: types.Message, state: FSMContext):
         try:
             result = pandas.eval(message["text"])
             await state.update_data(amount=result)
-            cat = await get_categories_user(1)
-            # await message.answer(
-            #     "Выберите тип операции", reply_markup=create_operation_keyboard
-            # )
+            await message.answer(
+                "Выберите тип операции", reply_markup=create_operation_keyboard
+            )
+            # await states.CreateOperation.kind.set()
         except Exception as e:
             await message.answer(e)
