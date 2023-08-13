@@ -6,7 +6,7 @@ from aiogram.contrib.fsm_storage.memory import MemoryStorage
 
 # from aiogram.contrib.fsm_storage.redis import RedisStorage2
 
-# logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.INFO)
 
 storage = MemoryStorage()
 

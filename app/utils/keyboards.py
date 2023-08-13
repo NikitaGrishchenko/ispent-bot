@@ -1,13 +1,14 @@
-from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
+from aiogram.types import KeyboardButton, ReplyKeyboardMarkup
 
-create_operation_keyboard = InlineKeyboardMarkup(
-    row_width=1,
-    inline_keyboard=[
+create_operation_keyboard = ReplyKeyboardMarkup(
+    keyboard=[
         [
-            InlineKeyboardButton(text="Доход", callback_data="income"),
+            KeyboardButton(text="Доход"),
         ],
         [
-            InlineKeyboardButton(text="Расход", callback_data="expense"),
+            KeyboardButton(text="Расход"),
         ],
     ],
+    resize_keyboard=True,
+    one_time_keyboard=True,
 )
