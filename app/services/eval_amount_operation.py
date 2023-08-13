@@ -12,7 +12,8 @@ async def eval_amount_operation(message: types.Message, state: FSMContext):
     Create operation in database
     return Operation object
     """
-    if re.findall(r"[^0-9+-/*.() ]", message["text"]) == []:
+
+    if re.findall(r"[^0-9-+*.() /]", message["text"]) == []:
         try:
             result = pandas.eval(message["text"])
             await state.finish()

@@ -1,3 +1,4 @@
+from .create_operation import create_operation
 from .create_user import create_user
 from .eval_amount_operation import eval_amount_operation
 from .get_categories_user import get_categories_user
@@ -8,4 +9,5 @@ __all__ = [
     "create_user",
     "eval_amount_operation",
     "get_categories_user",
+    "create_operation",
 ]

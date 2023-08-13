@@ -38,7 +38,6 @@ class Operation(db.Model):
     id = db.Column(db.Integer, unique=True, primary_key=True, autoincrement=True)
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
     category = db.Column(db.String(length=255))
-    comment = db.Column(db.String(length=255))
     kind = db.Column(db.Integer)
-    amount = db.Column(db.Integer)
+    amount = db.Column(db.Float)
     created_at = db.Column(db.DateTime(timezone=True), default=func.now())
