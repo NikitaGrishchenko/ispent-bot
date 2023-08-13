@@ -11,7 +11,7 @@ async def set_kind_operation(message: types.Message, state: FSMContext):
         async with state.proxy() as data:
             data["kind"] = message["text"]
         user = await services.get_user(message.from_user["id"])
-        keyboard = await keyboards.generate_category_user_keyboard(user.id)
+        keyboard = await keyboards.generate_category_user_keyboard(user.id, state)
         await message.answer("Введите категорию", reply_markup=keyboard)
         await states.CreateOperation.next()
     else:
