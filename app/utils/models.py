@@ -37,7 +37,7 @@ class Operation(db.Model):
 
     id = db.Column(db.Integer, unique=True, primary_key=True, autoincrement=True)
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
-    category_user_id = db.Column(db.Integer, db.ForeignKey("category_user.id"))
+    category = db.Column(db.String(length=255))
     comment = db.Column(db.String(length=255))
     kind = db.Column(db.Integer)
     amount = db.Column(db.Integer)

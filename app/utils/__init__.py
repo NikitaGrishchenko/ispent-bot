@@ -1,6 +1,6 @@
 from .commands import set_default_commands
-from .keyboards import create_operation_keyboard
-from .models import User, db, CategoryUser
+from .keyboards import create_operation_keyboard, generate_category_user_keyboard
+from .models import CategoryUser, User, db
 from .states import CreateOperation
 
 __all__ = [
@@ -10,4 +10,5 @@ __all__ = [
     "CreateOperation",
     "set_default_commands",
     "CategoryUser",
+    "generate_category_user_keyboard",
 ]

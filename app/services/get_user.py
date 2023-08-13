@@ -1,4 +1,4 @@
-from utils import User
+from utils.models import User
 
 
 async def get_user(id_telegram: str):
