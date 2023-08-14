@@ -22,8 +22,9 @@ class CategoryUser(db.Model):
 
     id = db.Column(db.Integer, unique=True, primary_key=True, autoincrement=True)
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
-    name = db.Column(db.String(length=255), unique=True)
+    name = db.Column(db.String(length=255))
     kind = db.Column(db.Integer)
+    __table_args__ = (db.UniqueConstraint("user_id", "name", "kind", name="_cat_user"),)
 
 
 # import enum
