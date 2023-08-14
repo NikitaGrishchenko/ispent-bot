@@ -3,8 +3,7 @@ import re
 import pandas
 from aiogram import types
 from aiogram.dispatcher import FSMContext
-from utils import states
-from utils.keyboards import create_operation_keyboard
+from utils import keyboards, states
 
 
 async def eval_amount_operation(message: types.Message, state: FSMContext):
@@ -20,7 +19,7 @@ async def eval_amount_operation(message: types.Message, state: FSMContext):
             async with state.proxy() as data:
                 data["amount"] = result
             await message.answer(
-                "Выберите тип операции", reply_markup=create_operation_keyboard
+                "Выберите тип операции", reply_markup=keyboards.kind_operation_keyboard
             )
             await states.CreateOperation.kind.set()
 

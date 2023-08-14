@@ -5,3 +5,8 @@ class CreateOperation(StatesGroup):
     amount = State()
     kind = State()
     category = State()
+
+
+class CreateCategoryUser(StatesGroup):
+    kind = State()
+    name = State()

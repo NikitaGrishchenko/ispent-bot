@@ -6,5 +6,6 @@ async def set_default_commands(dp):
         [
             types.BotCommand("start", "Регистрация"),
             types.BotCommand("test", "Тестовая команда"),
+            types.BotCommand("add_category", "Добавить свою категорию"),
         ]
     )

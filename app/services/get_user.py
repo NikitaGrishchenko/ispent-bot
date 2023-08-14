@@ -6,10 +6,7 @@ async def get_user(id_telegram: str):
     Get user from database by tg user id
     return User object or None
     """
-    try:
-        user = await User.query.where(User.id_telegram == id_telegram).gino.first()
-        if user:
-            return user
-        return None
-    except Exception as e:
-        await message.reply(e)
+    user = await User.query.where(User.id_telegram == id_telegram).gino.first()
+    if user:
+        return user
+    return None

@@ -1,0 +1,17 @@
+import services
+from aiogram import types
+from aiogram.dispatcher import FSMContext
+from loader import dp
+from utils import keyboards, states
+
+
+@dp.message_handler(commands="add_category")
+async def add_category(message: types.Message, state: FSMContext):
+    """
+    This handler will be called when user sends `/add_category` command
+    """
+    await state.finish()
+    await message.answer(
+        "Введите категорию", reply_markup=keyboards.kind_operation_keyboard
+    )
+    await states.CreateCategoryUser.kind.set()

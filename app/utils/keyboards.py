@@ -2,7 +2,7 @@ import services
 from aiogram.dispatcher import FSMContext
 from aiogram.types import KeyboardButton, ReplyKeyboardMarkup
 
-create_operation_keyboard = ReplyKeyboardMarkup(
+kind_operation_keyboard = ReplyKeyboardMarkup(
     keyboard=[
         [
             KeyboardButton(text="Доход"),

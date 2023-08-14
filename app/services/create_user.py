@@ -13,14 +13,11 @@ async def create_user(message: types.Message):
     if user:
         await message.reply("Вы уже зарегистрированы")
     else:
-        try:
-            user = await User.create(
-                id_telegram=message.from_user["id"],
-                first_name=message.from_user["first_name"],
-                username=message.from_user["username"],
-                language_code=message.from_user["language_code"],
-                is_bot=message.from_user["is_bot"],
-            )
-            return user
-        except Exception as e:
-            await message.reply(e)
+        user = await User.create(
+            id_telegram=message.from_user["id"],
+            first_name=message.from_user["first_name"],
+            username=message.from_user["username"],
+            language_code=message.from_user["language_code"],
+            is_bot=message.from_user["is_bot"],
+        )
+        return user
