@@ -11,7 +11,7 @@ async def create_user(message: types.Message):
     """
     user = await get_user(message.from_user["id"])
     if user:
-        await message.reply("Вы уже зарегистрированы")
+        await message.answer("Вы уже зарегистрированы")
     else:
         user = await User.create(
             id_telegram=message.from_user["id"],
