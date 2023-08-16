@@ -10,4 +10,4 @@ async def start(message: types.Message):
     """
     user = await services.create_user(message)
     if user:
-        await message.reply("Регистрация прошла успешно")
+        await message.answer("Регистрация прошла успешно")

@@ -1,5 +1,6 @@
 from .commands import set_default_commands
-from .keyboards import kind_operation_keyboard, generate_category_user_keyboard
+from .filters import IsAuth
+from .keyboards import generate_category_user_keyboard, kind_operation_keyboard
 from .models import CategoryUser, Operation, User, db
 from .states import CreateCategoryUser, CreateOperation
 
@@ -13,4 +14,5 @@ __all__ = [
     "generate_category_user_keyboard",
     "Operation",
     "CreateCategoryUser",
+    "IsAuth",
 ]

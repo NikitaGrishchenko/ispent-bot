@@ -19,7 +19,8 @@ async def eval_amount_operation(message: types.Message, state: FSMContext):
             async with state.proxy() as data:
                 data["amount"] = result
             await message.answer(
-                "Выберите тип операции", reply_markup=keyboards.kind_operation_keyboard
+                f"{result} ₽\nВыберите тип операции",
+                reply_markup=keyboards.kind_operation_keyboard,
             )
             await states.CreateOperation.kind.set()
 
