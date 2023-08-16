@@ -3,9 +3,10 @@ from aiogram import types
 from aiogram.dispatcher import FSMContext
 from loader import dp
 from utils import keyboards, states
+from utils.filters import IsAuth
 
 
-@dp.message_handler(commands="add_category")
+@dp.message_handler(IsAuth(is_auth=True), commands="add_category")
 async def add_category(message: types.Message, state: FSMContext):
     """
     This handler will be called when user sends `/add_category` command

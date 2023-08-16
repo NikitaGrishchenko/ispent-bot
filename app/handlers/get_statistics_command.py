@@ -12,3 +12,5 @@ async def get_statistics_command(message: types.Message):
     This handler will be called when user sends `/get_statistics` command
     """
     user_statistics = await services.get_user_statistics(message)
+    for _ in user_statistics:
+        await message.answer(_.category)

@@ -2,6 +2,7 @@ import services
 from aiogram import types
 from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.filters import BoundFilter
+from utils import exceptions
 
 
 class IsAuth(BoundFilter):
@@ -19,4 +20,4 @@ class IsAuth(BoundFilter):
                 await message.answer(
                     f"Для начала работы необходимо зарегистрироваться \n/start"
                 )
-                return False
+                raise exceptions.UnauthorisedException

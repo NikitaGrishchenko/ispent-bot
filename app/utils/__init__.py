@@ -1,4 +1,5 @@
 from .commands import set_default_commands
+from .exceptions import UnauthorisedException
 from .filters import IsAuth
 from .keyboards import generate_category_user_keyboard, kind_operation_keyboard
 from .models import CategoryUser, Operation, User, db
@@ -15,4 +16,5 @@ __all__ = [
     "Operation",
     "CreateCategoryUser",
     "IsAuth",
+    "UnauthorisedException",
 ]

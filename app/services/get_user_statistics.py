@@ -1,11 +1,18 @@
-from utils.models import User
+from aiogram import types
+from utils.models import Operation, User
+
+from .get_user import get_user
 
 
-async def get_user_statistics(id_telegram: str):
+async def get_user_statistics(message: types.Message):
     """
     Get user statistics from database by tg user id
     """
-    user = await User.query.where(User.id_telegram == id_telegram).gino.first()
+    user = await get_user(message.from_user["id"])
     if user:
-        return user
+        user_statistics = await Operation.query.where(
+            Operation.user_id == user.id
+        ).gino.all()
+
+        return user_statistics
     return None

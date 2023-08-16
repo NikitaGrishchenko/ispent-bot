@@ -14,7 +14,7 @@ async def eval_amount_operation(message: types.Message, state: FSMContext):
 
     if re.findall(r"[^0-9-+*.() /]", message["text"]) == []:
         try:
-            result = pandas.eval(message["text"])
+            result = round(pandas.eval(message["text"]), 2)
             await state.finish()
             async with state.proxy() as data:
                 data["amount"] = result
