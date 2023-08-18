@@ -139,6 +139,7 @@ cython_debug/
 
 # PyCharm varibles
 .idea/
+.vscode
 
 # data
 pgdata/
