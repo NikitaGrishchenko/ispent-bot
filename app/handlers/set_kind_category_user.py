@@ -1,8 +1,7 @@
-import services
 from aiogram import types
 from aiogram.dispatcher import FSMContext
 from loader import dp
-from utils import keyboards, states
+from utils import states
 
 
 @dp.message_handler(state=states.CreateCategoryUser.kind)

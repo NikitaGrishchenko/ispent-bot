@@ -1,5 +1,4 @@
-from aiogram import types
-from utils import Operation
+from utils.models import Operation
 
 from .get_user import get_user
 

@@ -15,8 +15,7 @@ def convert_kind_operation(kind):
     """
     if kind == 0:
         return "Расход"
-    else:
-        return "Доход"
+    return "Доход"
 
 
 async def get_user_statistics(message: types.Message):

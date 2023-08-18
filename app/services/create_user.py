@@ -1,5 +1,5 @@
 from aiogram import types
-from utils import User
+from utils.models import User
 
 from .get_user import get_user
 

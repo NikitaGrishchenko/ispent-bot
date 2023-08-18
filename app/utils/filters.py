@@ -1,6 +1,5 @@
 import services
 from aiogram import types
-from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.filters import BoundFilter
 from utils import exceptions
 

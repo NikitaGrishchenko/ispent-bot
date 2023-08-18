@@ -22,3 +22,4 @@ async def create_category_user(
     )
     if category_user:
         return category_user
+    return None
