@@ -2,31 +2,24 @@ import logging
 
 import config
 from aiogram import Bot, Dispatcher, executor, types
-from aiogram.contrib.fsm_storage.memory import MemoryStorage
+from aiogram.contrib.fsm_storage.redis import RedisStorage2
 
-# from aiogram.contrib.fsm_storage.redis import RedisStorage2
+# from aiogram.contrib.fsm_storage.memory import MemoryStorage
+
 
 logging.basicConfig(level=logging.INFO)
 
-storage = MemoryStorage()
+# storage = MemoryStorage()
 
-# storage = RedisStorage2(
-#     host=REDIS_HOST,
-#     port=REDIS_PORT,
-#     db=REDIS_DB,
-#     password=REDIS_PASSWORD,
-#     # и т.д.
-# )
-
-# Данные redis-клиента
-# REDIS_HOST = 'localhost'
-# REDIS_PORT = 6379
-# По умолчанию пароля нет. Он будет на сервере
-# REDIS_PASSWORD = None
+storage = RedisStorage2(
+    host=config.REDIS_HOST,
+    port=config.REDIS_PORT,
+    db=config.REDIS_DB,
+)
 
 bot = Bot(token=config.TOKEN, parse_mode=types.ParseMode.HTML)
 
-dp = Dispatcher(bot=bot, storage=MemoryStorage())
+dp = Dispatcher(bot=bot, storage=RedisStorage2())
 
 __all__ = (
     "bot",
