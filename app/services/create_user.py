@@ -1,6 +1,8 @@
 from aiogram import types
+from config import DEFAULT_USER_OPERATION
 from utils.models import User
 
+from .create_category_user import create_category_user
 from .get_user import get_user
 
 
@@ -20,4 +22,9 @@ async def create_user(message: types.Message):
             language_code=message.from_user["language_code"],
             is_bot=message.from_user["is_bot"],
         )
+        if user:
+            for operation in DEFAULT_USER_OPERATION:
+                await create_category_user(
+                    user.id_telegram, operation["kind"], operation["name"]
+                )
         return user

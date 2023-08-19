@@ -14,7 +14,7 @@ async def create_category_user(
     return category_user object
     """
     user = await get_user(user_telegram_id)
-    kind_number = 0 if kind == "Расход" else 1
+    kind_number = 0 if kind in ["Расход", 0] else 1
     category_user = await models.CategoryUser.create(
         user_id=user.id,
         kind=kind_number,
