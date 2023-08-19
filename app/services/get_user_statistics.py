@@ -55,7 +55,8 @@ def _get_date_list(operations) -> list:
         list: days
     """
     all_days = [operation.created_at.strftime("%d.%m.%Y") for operation in operations]
-    unique_days = list(set(all_days))
+    unique_days = sorted(list(set(all_days)))
+
     return unique_days
 
 
@@ -65,29 +66,35 @@ async def get_user_statistics(message: types.Message):
     """
     user = await get_user(message.from_user["id"])
     if user:
-        user_operations = await Operation.query.where(
-            Operation.user_id == user.id
-        ).gino.all()
+        user_operations = (
+            await Operation.query.where(Operation.user_id == user.id)
+            .order_by(Operation.created_at)
+            .gino.all()
+        )
 
-        days_list = _get_date_list(user_operations)
+        if user_operations:
+            days_list = _get_date_list(user_operations)
 
-        result = []
+            result = []
 
-        for day in days_list:
-            result.append(
-                {
-                    "day": day,
-                    "sum": f"{_amount_operation_per_day(user_operations, day)} ₽",
-                    "operations": _operation_per_day(user_operations, day),
-                }
-            )
+            for day in days_list:
+                result.append(
+                    {
+                        "day": day,
+                        "sum": f"{_amount_operation_per_day(user_operations, day)} ₽",
+                        "operations": _operation_per_day(user_operations, day),
+                    }
+                )
 
-        result_str = ""
-        for item in result:
-            result_str += f"{item['day'][:-5]}\n"
-            for operation in item["operations"]:
-                result_str += f"{_convert_kind_operation(operation['kind'])} {operation['amount']} ₽ — {operation['category']} \n"
-            result_str += f"Итого: {item['sum']} \n\n"
-        await message.answer(result_str)
+            result_str = ""
+            for item in result:
+                result_str += f"{item['day'][:-5]}\n"
+                for operation in item["operations"]:
+                    result_str += f"{_convert_kind_operation(operation['kind'])} {operation['amount']:g} ₽ — {operation['category']} \n"
+                result_str += f"Итого: {item['sum']:g} \n\n"
+            await message.answer(result_str)
+
+        else:
+            await message.answer("Вы ещё ничего не добавили")
 
     return None

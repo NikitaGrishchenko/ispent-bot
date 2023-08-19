@@ -1,3 +1,4 @@
+import emoji
 import services
 from aiogram import types
 from loader import dp
@@ -10,4 +11,6 @@ async def start_command(message: types.Message):
     """
     user = await services.create_user(message)
     if user:
-        await message.answer("Регистрация прошла успешно")
+        await message.answer(
+            f"Регистрация прошла успешно {emoji.emojize(':check_mark_button:')} \nЧтобы сохранить первую операцию, введите сумму прямо в чат, или напишите выражение, которое необходимо рассчитать (например: 1600/7)"
+        )

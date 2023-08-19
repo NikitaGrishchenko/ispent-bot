@@ -1,3 +1,4 @@
+import emoji
 import services
 from aiogram import types
 from aiogram.dispatcher import FSMContext
@@ -14,7 +15,10 @@ async def set_name_category_user(message: types.Message, state: FSMContext):
         message.from_user["id"], data["kind"], data["name"]
     )
     if category_user:
-        await message.answer("Успешно", reply_markup=types.ReplyKeyboardRemove())
+        await message.answer(
+            f"Успешно {emoji.emojize(':check_mark_button:')}",
+            reply_markup=types.ReplyKeyboardRemove(),
+        )
     else:
         await message.answer(
             "Не удалось создать категорию, возможно она уже существует, попробуйте еще раз"

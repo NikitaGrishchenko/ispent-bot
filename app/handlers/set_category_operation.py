@@ -1,3 +1,4 @@
+import emoji
 from aiogram import types
 from aiogram.dispatcher import FSMContext
 from loader import dp
@@ -14,5 +15,8 @@ async def set_category_operation(message: types.Message, state: FSMContext):
         message.from_user["id"], data["category"], data["kind"], data["amount"]
     )
     if operation:
-        await message.answer("Успешно", reply_markup=types.ReplyKeyboardRemove())
+        await message.answer(
+            f"Операция добавлена {emoji.emojize(':check_mark_button:')}",
+            reply_markup=types.ReplyKeyboardRemove(),
+        )
     await state.finish()

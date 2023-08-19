@@ -17,6 +17,6 @@ class IsAuth(BoundFilter):
                 return True
             else:
                 await message.answer(
-                    f"Для начала работы необходимо зарегистрироваться \n/start"
+                    f"Для начала работы необходимо запустить бота \n/start"
                 )
                 raise exceptions.UnauthorisedException

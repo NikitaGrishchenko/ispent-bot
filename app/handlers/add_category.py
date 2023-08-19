@@ -11,7 +11,5 @@ async def add_category(message: types.Message, state: FSMContext):
     This handler will be called when user sends `/add_category` command
     """
     await state.finish()
-    await message.answer(
-        "Введите категорию", reply_markup=keyboards.kind_operation_keyboard
-    )
+    await message.answer("Выберите тип", reply_markup=keyboards.kind_operation_keyboard)
     await states.CreateCategoryUser.kind.set()

@@ -9,7 +9,9 @@ async def set_kind_category_user(message: types.Message, state: FSMContext):
     if message["text"] in ["Доход", "Расход"]:
         async with state.proxy() as data:
             data["kind"] = message["text"]
-        await message.answer("Введите наименование категории")
+        await message.answer(
+            "Введите название категории, которая автоматически будет предлагаться вам при добавлении операции"
+        )
         await states.CreateCategoryUser.next()
     else:
         await state.finish()
