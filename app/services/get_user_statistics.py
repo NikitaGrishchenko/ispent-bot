@@ -81,7 +81,7 @@ async def get_user_statistics(message: types.Message):
                 result.append(
                     {
                         "day": day,
-                        "sum": f"{_amount_operation_per_day(user_operations, day)} ₽",
+                        "sum": _amount_operation_per_day(user_operations, day),
                         "operations": _operation_per_day(user_operations, day),
                     }
                 )
@@ -91,7 +91,7 @@ async def get_user_statistics(message: types.Message):
                 result_str += f"{item['day'][:-5]}\n"
                 for operation in item["operations"]:
                     result_str += f"{_convert_kind_operation(operation['kind'])} {operation['amount']:g} ₽ — {operation['category']} \n"
-                result_str += f"Итого: {item['sum']:g} \n\n"
+                result_str += f"Итого за день: {item['sum']:g} ₽ \n\n"
             await message.answer(result_str)
 
         else:
