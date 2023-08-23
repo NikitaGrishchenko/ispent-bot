@@ -7,4 +7,5 @@ from utils.filters import IsAuth
 
 @dp.message_handler(IsAuth(is_auth=True), commands="test")
 async def test_command(message: types.Message, state: FSMContext):
-    await message.answer("1")
+    data = await state.get_data()
+    await message.answer(data)

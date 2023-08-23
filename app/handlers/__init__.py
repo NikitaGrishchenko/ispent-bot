@@ -1,4 +1,5 @@
 from .add_category import add_category
+from .cancel_last_user_operation import cancel_last_user_operation
 from .get_statistics_command import get_statistics_command
 from .set_category_operation import set_category_operation
 from .set_kind_category_user import set_kind_category_user
@@ -18,4 +19,5 @@ __all__ = [
     "set_kind_category_user",
     "set_name_category_user",
     "get_statistics_command",
+    "cancel_last_user_operation",
 ]
