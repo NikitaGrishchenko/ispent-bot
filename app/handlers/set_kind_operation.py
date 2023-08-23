@@ -7,7 +7,7 @@ from utils import keyboards, states
 
 @dp.message_handler(state=states.CreateOperation.kind)
 async def set_kind_operation(message: types.Message, state: FSMContext):
-    if message["text"] in ["Доход", "Расход"]:
+    if message["text"].lower() in ["Доход".lower(), "Расход".lower()]:
         async with state.proxy() as data:
             data["kind"] = message["text"]
         user = await services.get_user(message.from_user["id"])
