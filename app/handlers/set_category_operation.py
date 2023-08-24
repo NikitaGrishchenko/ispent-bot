@@ -1,6 +1,9 @@
+import asyncio
+
 import emoji
 from aiogram import types
 from aiogram.dispatcher import FSMContext
+from aiogram.utils.exceptions import MessageToDeleteNotFound
 from loader import dp
 from services import create_operation
 from utils import keyboards, states
@@ -17,10 +20,19 @@ async def set_category_operation(message: types.Message, state: FSMContext):
     await state.finish()
 
     if operation:
-        # await message.answer(types.ReplyKeyboardRemove() )
         async with state.proxy() as data:
             data["telegram_id"] = message.from_id
+
         await message.answer(
             f"Операция добавлена {emoji.emojize(':check_mark_button:')}",
+            reply_markup=types.ReplyKeyboardRemove(),
+        )
+        message_with_keyboard = await message.answer(
+            "Нажмите, чтобь отменить последнюю операцию",
             reply_markup=keyboards.cancel_last_operation_inline,
         )
+        await asyncio.sleep(5)
+        try:
+            await message_with_keyboard.delete()
+        except MessageToDeleteNotFound:
+            pass
