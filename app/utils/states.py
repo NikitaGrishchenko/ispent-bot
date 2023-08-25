@@ -10,3 +10,9 @@ class CreateOperation(StatesGroup):
 class CreateCategoryUser(StatesGroup):
     kind = State()
     name = State()
+
+
+class MySG(StatesGroup):
+    greeting = State()
+    age = State()
+    finish = State()
