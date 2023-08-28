@@ -1,6 +1,8 @@
 import config
 import handlers
 from aiogram import executor
+from aiogram_dialog import DialogRegistry
+from dialogs.user_statistics_dialog import user_statistics_dialog
 from loader import dp
 from utils import db, set_default_commands
 
@@ -17,6 +19,9 @@ async def on_shutdown(dp):
 
 
 if __name__ == "__main__":
+    registry = DialogRegistry(dp)
+    registry.register(user_statistics_dialog)
+
     executor.start_polling(
         dp,
         skip_updates=True,

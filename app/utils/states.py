@@ -12,7 +12,5 @@ class CreateCategoryUser(StatesGroup):
     name = State()
 
 
-class MySG(StatesGroup):
-    greeting = State()
-    age = State()
-    finish = State()
+class UserStatisticsState(StatesGroup):
+    current_date = State()
