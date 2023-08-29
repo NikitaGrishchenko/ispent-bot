@@ -1,3 +1,5 @@
+import locale
+
 import config
 import handlers
 from aiogram import executor
@@ -8,6 +10,10 @@ from utils import db, set_default_commands
 
 
 async def on_startup(dp):
+    locale.setlocale(
+        category=locale.LC_ALL,
+        locale="Russian",
+    )
     await db.set_bind(config.DATABASE_URL)
     await set_default_commands(dp)
     # await db.gino.drop_all()

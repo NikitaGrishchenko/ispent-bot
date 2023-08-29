@@ -11,6 +11,4 @@ async def get_statistics_command(message: types.Message, dialog_manager: DialogM
     """
     This handler will be called when user sends `/get_statistics` command
     """
-    await dialog_manager.start(
-        UserStatisticsState.current_date, mode=StartMode.RESET_STACK
-    )
+    await dialog_manager.start(UserStatisticsState.main, mode=StartMode.NORMAL)

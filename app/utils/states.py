@@ -13,4 +13,4 @@ class CreateCategoryUser(StatesGroup):
 
 
 class UserStatisticsState(StatesGroup):
-    current_date = State()
+    main = State()
