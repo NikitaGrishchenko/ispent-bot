@@ -28,3 +28,6 @@ async def cancel_last_user_operation(
         await callback_query.message.delete()
 
         await state.finish()
+    else:
+        await callback_query.answer()
+        await state.finish()
