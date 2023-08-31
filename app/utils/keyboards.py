@@ -41,8 +41,10 @@ async def generate_category_user_keyboard(user_id: int, state: FSMContext):
         _type_: _description_
     """
     data = await state.get_data()
-    categories_user = await services.get_categories_user(user_id, data["kind"])
+    categories_user = await services.get_categories_user_by_kind(user_id, data["kind"])
     keyboard = ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
-    buttons = [item.name for item in categories_user]
+    buttons = []
+    if categories_user is not None:
+        buttons = [item.name for item in categories_user]
     keyboard.add(*buttons)
     return keyboard

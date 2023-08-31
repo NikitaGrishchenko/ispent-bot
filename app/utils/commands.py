@@ -6,5 +6,6 @@ async def set_default_commands(dp):
         [
             types.BotCommand("get_statistics", "Вывести статистику"),
             types.BotCommand("add_category", "Добавить свою категорию"),
+            types.BotCommand("remove_category", "Удалить свою категорию"),
         ]
     )

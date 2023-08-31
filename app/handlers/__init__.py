@@ -1,7 +1,9 @@
 from .add_category import add_category
 from .cancel_last_user_operation import cancel_last_user_operation
 from .get_statistics_command import get_statistics_command
+from .remove_category import remove_category
 from .set_category_operation import set_category_operation
+from .set_id_category_user import set_id_category_user
 from .set_kind_category_user import set_kind_category_user
 from .set_kind_operation import set_kind_operation
 from .set_name_category_user import set_name_category_user
@@ -20,4 +22,6 @@ __all__ = [
     "set_name_category_user",
     "get_statistics_command",
     "cancel_last_user_operation",
+    "set_id_category_user",
+    "remove_category",
 ]

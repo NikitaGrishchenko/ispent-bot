@@ -7,7 +7,12 @@ from .keyboards import (
     kind_operation_keyboard,
 )
 from .models import CategoryUser, Operation, User, db
-from .states import CreateCategoryUser, CreateOperation, UserStatisticsState
+from .states import (
+    CreateCategoryUser,
+    CreateOperation,
+    RemoveCategoryUser,
+    UserStatisticsState,
+)
 
 __all__ = [
     "User",
@@ -23,4 +28,5 @@ __all__ = [
     "UnauthorisedException",
     "cancel_last_operation_inline",
     "UserStatisticsState",
+    "RemoveCategoryUser",
 ]

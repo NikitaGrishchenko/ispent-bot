@@ -12,5 +12,9 @@ class CreateCategoryUser(StatesGroup):
     name = State()
 
 
+class RemoveCategoryUser(StatesGroup):
+    id = State()
+
+
 class UserStatisticsState(StatesGroup):
     main = State()
