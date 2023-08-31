@@ -15,7 +15,7 @@ from aiogram_dialog.widgets.input import MessageInput
 from aiogram_dialog.widgets.kbd import Back, Button, Group, Row, Select, SwitchTo
 from aiogram_dialog.widgets.media import StaticMedia
 from aiogram_dialog.widgets.text import Const, Format, Multi
-from services import get_user_statistics
+from services import GetUserStatistics
 from utils.states import UserStatisticsState
 
 
@@ -31,7 +31,7 @@ async def get_data(dialog_manager: DialogManager, **kwargs):
 
     user_telegram_id = dialog_manager.event.from_user.id
     return {
-        "output_data": await get_user_statistics(user_telegram_id, current_date),
+        "output_data": await GetUserStatistics.execute(user_telegram_id, current_date),
     }
 
 

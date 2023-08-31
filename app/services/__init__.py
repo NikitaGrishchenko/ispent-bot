@@ -5,7 +5,7 @@ from .delete_last_operation import delete_last_operation
 from .eval_amount_operation import eval_amount_operation
 from .get_categories_user import get_categories_user
 from .get_user import get_user
-from .get_user_statistics import get_user_statistics
+from .get_user_statistics import GetUserStatistics
 
 __all__ = [
     "get_user",
@@ -13,7 +13,7 @@ __all__ = [
     "eval_amount_operation",
     "get_categories_user",
     "create_operation",
-    "get_user_statistics",
+    "GetUserStatistics",
     "create_category_user",
     "delete_last_operation",
 ]
