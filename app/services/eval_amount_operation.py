@@ -12,6 +12,7 @@ async def eval_amount_operation(message: types.Message, state: FSMContext):
     return Operation object
     """
 
+    # TODO если ввести 12.12.12 будет отъеб в eval
     if re.findall(r"[^0-9-+*.() /]", message["text"]) == []:
         try:
             result = round(pandas.eval(message["text"]), 2)

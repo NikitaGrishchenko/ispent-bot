@@ -2,12 +2,14 @@ from .commands import set_default_commands
 from .exceptions import UnauthorisedException
 from .filters import IsAuth
 from .keyboards import (
-    cancel_last_operation_inline,
+    change_last_operation_inline,
+    date_keyboard,
     generate_category_user_keyboard,
     kind_operation_keyboard,
 )
 from .models import CategoryUser, Operation, User, db
 from .states import (
+    ChangeDateOperation,
     CreateCategoryUser,
     CreateOperation,
     RemoveCategoryUser,
@@ -26,7 +28,9 @@ __all__ = [
     "CreateCategoryUser",
     "IsAuth",
     "UnauthorisedException",
-    "cancel_last_operation_inline",
+    "change_last_operation_inline",
     "UserStatisticsState",
     "RemoveCategoryUser",
+    "ChangeDateOperation",
+    "date_keyboard",
 ]

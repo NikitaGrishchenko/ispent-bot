@@ -1,3 +1,4 @@
+from .change_date_last_operation import change_date_last_operation
 from .create_category_user import create_category_user
 from .create_operation import create_operation
 from .create_user import create_user
@@ -20,4 +21,5 @@ __all__ = [
     "delete_last_operation",
     "get_categories_user_all",
     "remove_category_user",
+    "change_date_last_operation",
 ]

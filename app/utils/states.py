@@ -16,5 +16,9 @@ class RemoveCategoryUser(StatesGroup):
     id = State()
 
 
+class ChangeDateOperation(StatesGroup):
+    date = State()
+
+
 class UserStatisticsState(StatesGroup):
     main = State()

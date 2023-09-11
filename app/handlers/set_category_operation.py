@@ -28,10 +28,10 @@ async def set_category_operation(message: types.Message, state: FSMContext):
             reply_markup=types.ReplyKeyboardRemove(),
         )
         message_with_keyboard = await message.answer(
-            "Нажмите, чтобь отменить последнюю операцию",
-            reply_markup=keyboards.cancel_last_operation_inline,
+            "Нажмите, чтобы изменить последнюю операцию",
+            reply_markup=keyboards.change_last_operation_inline,
         )
-        await asyncio.sleep(5)
+        await asyncio.sleep(4)
         try:
             await message_with_keyboard.delete()
         except MessageToDeleteNotFound:

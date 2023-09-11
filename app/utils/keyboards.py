@@ -7,11 +7,14 @@ from aiogram.types import (
     ReplyKeyboardMarkup,
 )
 
-cancel_last_operation_inline = InlineKeyboardMarkup(
+change_last_operation_inline = InlineKeyboardMarkup(
     row_width=1,
     inline_keyboard=[
         [
-            InlineKeyboardButton(text="Отмена", callback_data="cancel_last_operation"),
+            InlineKeyboardButton(text="Удалить", callback_data="cancel_last_operation"),
+            InlineKeyboardButton(
+                text="Изменить дату", callback_data="change_date_last_operation"
+            ),
         ]
     ],
 )
@@ -23,6 +26,19 @@ kind_operation_keyboard = ReplyKeyboardMarkup(
         ],
         [
             KeyboardButton(text="Расход"),
+        ],
+    ],
+    resize_keyboard=True,
+    one_time_keyboard=True,
+)
+
+date_keyboard = ReplyKeyboardMarkup(
+    keyboard=[
+        [
+            KeyboardButton(text="Вчера"),
+        ],
+        [
+            KeyboardButton(text="Позавчера"),
         ],
     ],
     resize_keyboard=True,
