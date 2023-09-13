@@ -20,9 +20,7 @@ async def set_date_operation(message: types.Message, state: FSMContext):
             await services.change_date_last_operation(
                 data["telegram_id"], message["text"]
             )
-    # if message["text"].lower() in ["Вчера".lower(), "Позавчера".lower(), re.match()]:
-    # async with state.proxy() as data:
-    #     data["kind"] = message["text"]
+
 
     # user = await services.get_user(message.from_user["id"])
     else:

@@ -14,7 +14,7 @@ class User(db.Model):
     last_name = db.Column(db.String(length=255))
     language_code = db.Column(db.String(length=255))
     is_bot = db.Column(db.Boolean)
-    created_at = db.Column(db.DateTime(timezone=True), default=func.now())
+    created_at = db.Column(db.DateTime(), default=func.now())
 
 
 class CategoryUser(db.Model):
@@ -27,6 +27,7 @@ class CategoryUser(db.Model):
     __table_args__ = (db.UniqueConstraint("user_id", "name", "kind", name="_cat_user"),)
 
 
+# TODO перечисления
 # import enum
 # class MessageTypes(enum.Enum):
 #     income = 1
@@ -41,4 +42,4 @@ class Operation(db.Model):
     category = db.Column(db.String(length=255))
     kind = db.Column(db.Integer)
     amount = db.Column(db.Float)
-    created_at = db.Column(db.DateTime(timezone=True), default=func.now())
+    date = db.Column(db.DateTime(), default=func.now())

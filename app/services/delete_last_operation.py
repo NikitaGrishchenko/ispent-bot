@@ -11,5 +11,11 @@ async def delete_last_operation(id_telegram: int):
     if user:
         operation = await models.Operation.query.where(
             models.Operation.user_id == user.id
+        ).gino.all()
+
+        all_operation_id_list = [item.id for item in operation]
+
+        operation = await models.Operation.query.where(
+            models.Operation.id == max(all_operation_id_list)
         ).gino.first()
         await operation.delete()

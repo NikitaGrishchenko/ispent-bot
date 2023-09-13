@@ -18,13 +18,21 @@ async def change_date_last_operation(id_telegram: int, date_time_str: str):
         if re.fullmatch(r"^\d{2}.\d{2}.\d{2}", date_time_str):
             new_date = datetime.datetime.strptime(date_time_str, "%d.%m.%y")
         if re.fullmatch(r"^\d{2}.\d{2}", date_time_str):
-            new_date = datetime.datetime.strptime(date_time_str, "%d.%m")
+            date_time_str += f".{datetime.date.today().year}"
+            new_date = datetime.datetime.strptime(date_time_str, "%d.%m.%Y")
+        if date_time_str.lower() == "вчера":
+            new_date = datetime.date.today() - datetime.timedelta(days=1)
+        if date_time_str.lower() == "позавчера":
+            new_date = datetime.date.today() - datetime.timedelta(days=2)
 
-        tz = pytz.timezone("Europe/Moscow")
-        new_date = tz.localize(new_date)
+        all_operation = await models.Operation.query.where(
+            models.Operation.user_id == user.id
+        ).gino.all()
+
+        all_operation_id_list = [item.id for item in all_operation]
 
         operation = await models.Operation.query.where(
-            models.Operation.user_id == user.id
+            models.Operation.id == max(all_operation_id_list)
         ).gino.first()
-        # TODO не правильно сохраняет дату
-        await operation.update(created_at=new_date).apply()
+
+        await operation.update(date=new_date).apply()

@@ -13,9 +13,9 @@ class GetUserStatistics:
         if user:
             user_operations = (
                 await Operation.query.where(Operation.user_id == user.id)
-                .where(func.date_part("month", Operation.created_at) == date.month)
-                .where(func.date_part("year", Operation.created_at) == date.year)
-                .order_by(Operation.created_at)
+                .where(func.date_part("month", Operation.date) == date.month)
+                .where(func.date_part("year", Operation.date) == date.year)
+                .order_by(Operation.date)
                 .gino.all()
             )
 
@@ -66,7 +66,7 @@ class GetUserStatistics:
     def _amount_operation_per_day(user_operations, day):
         amount_per_day = 0
         for operation in user_operations:
-            if operation.created_at.strftime("%d.%m.%Y") == day:
+            if operation.date.strftime("%d.%m.%Y") == day:
                 if operation.kind == 0:
                     amount_per_day = amount_per_day - operation.amount
                 if operation.kind == 1:
@@ -77,22 +77,20 @@ class GetUserStatistics:
     def _operation_per_day(user_operations, day):
         result_operations = []
         for operation in user_operations:
-            if operation.created_at.strftime("%d.%m.%Y") == day:
+            if operation.date.strftime("%d.%m.%Y") == day:
                 result_operations.append(
                     {
                         "amount": operation.amount,
                         "kind": operation.kind,
                         "category": operation.category,
-                        "created_at": operation.created_at,
+                        "date": operation.date,
                     }
                 )
         return result_operations
 
     @staticmethod
     def _get_date_list(operations):
-        all_days = [
-            operation.created_at.strftime("%d.%m.%Y") for operation in operations
-        ]
+        all_days = [operation.date.strftime("%d.%m.%Y") for operation in operations]
         unique_days = sorted(list(set(all_days)))
 
         return unique_days
