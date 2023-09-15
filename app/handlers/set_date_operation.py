@@ -17,12 +17,9 @@ async def set_date_operation(message: types.Message, state: FSMContext):
     ):
         data = await state.get_data()
         if data["telegram_id"]:
-            await services.change_date_last_operation(
-                data["telegram_id"], message["text"]
-            )
+            await services.change_date_last_operation(data["telegram_id"], message)
+            await state.finish()
 
-
-    # user = await services.get_user(message.from_user["id"])
     else:
         await state.finish()
         await message.answer("Неверные данные")

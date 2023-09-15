@@ -1,17 +1,20 @@
 import datetime
 import re
 
+import emoji
 import pytz
+from aiogram import types
 from utils import models
 
 from .get_user import get_user
 
 
-async def change_date_last_operation(id_telegram: int, date_time_str: str):
+async def change_date_last_operation(telegram_id: int, message: types.Message):
     """
     Change date last user operation from database
     """
-    user = await get_user(id_telegram)
+    user = await get_user(telegram_id)
+    date_time_str = message["text"]
     if user:
         if re.fullmatch(r"^\d{2}.\d{2}.\d{4}", date_time_str):
             new_date = datetime.datetime.strptime(date_time_str, "%d.%m.%Y")
@@ -36,3 +39,7 @@ async def change_date_last_operation(id_telegram: int, date_time_str: str):
         ).gino.first()
 
         await operation.update(date=new_date).apply()
+
+        await message.answer(
+            f"Успешно {emoji.emojize(':check_mark_button:')}",
+        )

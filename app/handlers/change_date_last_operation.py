@@ -16,7 +16,7 @@ async def change_date_last_operation(
         await callback_query.answer()
 
         await callback_query.message.answer(
-            "Укажите дату в формате 31.12.2000 или 31.12, или выберите что-то из подсказки",
+            "Укажите дату в формате 31.12.2000 или 31.12, или выберите что-то из подсказок",
             reply_markup=keyboards.date_keyboard,
         )
 
