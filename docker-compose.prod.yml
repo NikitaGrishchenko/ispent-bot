@@ -1,0 +1,31 @@
+version: "3.8"
+
+services:
+  db:
+    image: postgres:15.0-alpine
+    volumes:
+      - pg-data:/var/lib/postgresql/data/
+    restart: always
+    environment:
+      POSTGRES_DB: ${DOCKER_DB_NAME}
+      POSTGRES_USER: ${DOCKER_DB_USER}
+      POSTGRES_PASSWORD: ${DOCKER_DB_PASSWORD}
+    expose:
+      - 5432
+  redis:
+    container_name: redis_container
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+  bot:
+    build: .
+    command: sh -c "python /var/app/src/__main__.py"
+    volumes:
+      - ./.env:/var/app/.env
+    restart: always
+    depends_on:
+      - db
+      - redis
+
+volumes:
+  pg-data:
