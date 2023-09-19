@@ -17,7 +17,7 @@ async def on_startup(dp):
     await db.set_bind(config.DATABASE_URL)
     await set_default_commands(dp)
     # await db.gino.drop_all()
-    # await db.gino.create_all()
+    await db.gino.create_all()
 
 
 async def on_shutdown(dp):
