@@ -1,7 +1,8 @@
 version: "3.8"
 
 services:
-  db:
+  postgres:
+    container_name: postgres_container
     image: postgres:15.0-alpine
     volumes:
       - pg-data:/var/lib/postgresql/data/
@@ -18,13 +19,16 @@ services:
     ports:
       - "6379:6379"
   bot:
+    container_name: bot_container
     build: .
-    command: sh -c "python /var/app/src/__main__.py"
+    expose:
+      - 8000
+    command: python /var/app/src/__main__.py
     volumes:
       - ./.env:/var/app/.env
     restart: always
     depends_on:
-      - db
+      - postgres
       - redis
 
 volumes:
