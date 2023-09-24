@@ -11,25 +11,17 @@ services:
       POSTGRES_DB: ${DOCKER_DB_NAME}
       POSTGRES_USER: ${DOCKER_DB_USER}
       POSTGRES_PASSWORD: ${DOCKER_DB_PASSWORD}
-    expose:
-      - 5432
-  redis:
-    container_name: redis_container
-    image: redis:alpine
     ports:
-      - "6379:6379"
+      - "5432:5432"
   bot:
     container_name: bot_container
-    build: .
-    expose:
-      - 8000
-    command: python /var/app/src/__main__.py
+    image: grishchenkonikita/aiogram
+    command: poetry run python3 /var/www/app/src/__main__.py
     volumes:
-      - ./.env:/var/app/.env
+      - ./.env:/var/www/app/.env
     restart: always
     depends_on:
       - postgres
-      - redis
 
 volumes:
   pg-data:

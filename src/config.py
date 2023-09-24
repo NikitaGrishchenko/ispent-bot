@@ -8,10 +8,10 @@ TOKEN = str(os.getenv("TOKEN"))
 
 DATABASE_URL = str(os.getenv("DATABASE_URL"))
 
-REDIS_HOST = str(os.getenv("REDIS_HOST"))
-REDIS_PORT = str(os.getenv("REDIS_PORT"))
-REDIS_DB = str(os.getenv("REDIS_DB"))
-REDIS_PASSWORD = str(os.getenv("REDIS_PASSWORD"))
+DOCKER_DB_NAME = str(os.getenv("DOCKER_DB_NAME"))
+DOCKER_DB_USER = str(os.getenv("DOCKER_DB_USER"))
+DOCKER_DB_PASSWORD = str(os.getenv("DOCKER_DB_PASSWORD"))
+DOCKER_DB_HOST = str(os.getenv("DOCKER_DB_HOST"))
 
 
 DEFAULT_USER_OPERATION = [
